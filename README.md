@@ -10,7 +10,7 @@ A compassionate AI-powered mental health chatbot built with React, Node.js, and 
 
 ## 🌐 Live Demo
 
-🔗 [mental-health-chatbot.vercel.app](https://mental-health-chatbot-sage.vercel.app/)
+🔗 [mental-health-chatbot.vercel.app](https://mental-health-chatbot-taupe-mu.vercel.app/)
 
 ---
 
