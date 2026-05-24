@@ -3,7 +3,7 @@ import axios from "axios";
 import Message from "./Message";
 import Resources from "./Resources";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+const API_URL = import.meta.env.VITE_API_URL || "https://mental-health-backend2.onrender.com";
 
 export default function Chat() {
   const [messages, setMessages] = useState([
