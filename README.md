@@ -142,7 +142,3 @@ This project is open source under the [MIT License](LICENSE).
 
 ---
 
-## 🙌 Acknowledgements
-
-- [Anthropic](https://www.anthropic.com) for the Claude API
-- [NAMI](https://www.nami.org) and [7 Cups](https://www.7cups.com) for mental health resources
