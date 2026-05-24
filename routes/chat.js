@@ -35,37 +35,30 @@ Your role is to:
 Current stress level detected: ${stressLevel}
 If stress level is HIGH, prioritize recommending professional help.`;
 
-  const geminiHistory = (history || []).map(msg => ({
-    role: msg.role === 'assistant' ? 'model' : 'user',
-    parts: [{ text: msg.content }]
-  }));
-
-  const contents = [
-    ...geminiHistory,
-    { role: 'user', parts: [{ text: message }] }
+  const messages = [
+    ...(history || []),
+    { role: 'user', content: message }
   ];
 
   try {
     const response = await axios.post(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
+      'https://api.anthropic.com/v1/messages',
       {
-        system_instruction: {
-          parts: [{ text: systemPrompt }]
-        },
-        contents: contents,
-        generationConfig: {
-          maxOutputTokens: 1000,
-          temperature: 0.7
-        }
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: systemPrompt,
+        messages: messages
       },
       {
         headers: {
+          'x-api-key': process.env.ANTHROPIC_API_KEY,
+          'anthropic-version': '2023-06-01',
           'Content-Type': 'application/json'
         }
       }
     );
 
-    const reply = response.data.candidates[0].content.parts[0].text;
+    const reply = response.data.content[0].text;
 
     res.json({
       reply,
