@@ -46,8 +46,11 @@ If stress level is HIGH, prioritize recommending professional help.`;
   ];
 
   try {
+    const apiKey = process.env.GEMINI_API_KEY;
+    const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + apiKey;
+
     const response = await axios.post(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY}`
+      url,
       {
         system_instruction: {
           parts: [{ text: systemPrompt }]
